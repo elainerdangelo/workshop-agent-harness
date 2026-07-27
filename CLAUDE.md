@@ -31,6 +31,10 @@ Embeddings OpenAI `text-embedding-3-large` (3072d), só para embeddar a *query* 
 - **Stores pré-populados são sagrados**: nunca `docker compose down -v` nem remover volumes
   (apaga ~5 anos de dados + os índices do Qdrant).
 - Cada run gravado no schema `harness` (+ Langfuse quando provisionado).
+- **Issues só no fork `elainerdangelo/workshop-agent-harness`**: nunca criar, comentar, fechar ou
+  puxar para implementação uma issue do upstream `caio-moliveira/workshop-agent-harness`. Todo
+  trabalho do agente (via `/to-issues`, `gh`, ou pickup de issue `ready-for-agent`) opera só no
+  fork da usuária.
 
 ## Onde fica o quê
 - regras por área (path-scoped via `paths:`, carregam só ao tocar a área): `.claude/rules/`
@@ -54,8 +58,8 @@ Infra: `infra/nginx/`.
 
 ### Issue tracker
 
-Issues e PRDs vivem como GitHub Issues do repo `caio-moliveira/workshop-agent-harness`, via `gh`
-CLI. Ver `docs/agents/issue-tracker.md`.
+Issues e PRDs vivem como GitHub Issues do fork `elainerdangelo/workshop-agent-harness`, via `gh`
+CLI (ver invariante acima — nunca o upstream `caio-moliveira/...`). Ver `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
