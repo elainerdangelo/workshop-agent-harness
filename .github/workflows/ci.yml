@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validar:
+    name: ruff + mypy + pytest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instala uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Instala Python 3.13
+        run: uv python install 3.13
+
+      - name: Sincroniza dependências
+        run: uv sync --all-extras --dev
+
+      - name: ruff check
+        run: uv run ruff check backend
+
+      - name: mypy
+        run: uv run mypy backend
+
+      - name: pytest
+        run: uv run pytest -q
